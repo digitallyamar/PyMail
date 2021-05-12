@@ -19,8 +19,6 @@ message["To"] = receiver_email
 text = """\
 Hi,
 How are you?
-Real Python has many great tutorials:
-www.realpython.com"""
 html = """\
 <html>
   <body>
@@ -46,5 +44,5 @@ message.attach(part2)
 context = ssl.create_default_context()
 
 with smtplib.SMTP_SSL("smtp.gmail.com", port, context=context) as server:
-    server.login("fitwithamar@gmail.com", password)
+    server.login(sender_email, password)
     server.sendmail(sender_email, receiver_email, message.as_string())
